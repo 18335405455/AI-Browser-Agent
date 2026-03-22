@@ -1,4 +1,4 @@
-```md
+````md
 # 🤖 AI-Browser-Agent
 
 ✨ A browser automation data collection and AI-powered analysis system built with Playwright, FastAPI, and Streamlit.
@@ -10,7 +10,7 @@
 This project automates browser interactions to crawl structured quote data, performs statistical analysis, exposes RESTful APIs, and visualizes results through an interactive dashboard.
 
 > 🧠 End-to-end pipeline:  
-Playwright → Data Processing → FastAPI → Streamlit Dashboard
+> Playwright → Data Processing → FastAPI → Streamlit Dashboard
 
 ---
 
@@ -68,8 +68,7 @@ Playwright → Data Processing → FastAPI → Streamlit Dashboard
 
 ## 📂 Project Structure
 
-```
-
+```text
 AI-Browser-Agent/
 ├── app/
 │   ├── crawler/
@@ -88,7 +87,6 @@ AI-Browser-Agent/
 │   └── llm_report.txt
 ├── README.md
 └── requirements.txt
-
 ````
 
 ---
@@ -99,7 +97,7 @@ AI-Browser-Agent/
 
 ```bash
 python -m venv venv
-````
+```
 
 ### 2️⃣ Activate environment
 
@@ -134,7 +132,7 @@ uvicorn app.api.server:app --reload
 
 👉 Swagger UI:
 
-```
+```text
 http://127.0.0.1:8000/docs
 ```
 
