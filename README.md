@@ -1,27 +1,57 @@
+```md
 # 🤖 AI-Browser-Agent
 
-✨ A browser automation + AI-powered data analysis agent built with Playwright and Python.
+✨ A browser automation data collection and AI-powered analysis system built with Playwright, FastAPI, and Streamlit.
 
 ---
 
 ## 🚀 Project Overview
 
-This project implements an **AI-enhanced browser data agent** that automates web interaction, collects structured data across paginated pages, performs statistical analysis, and generates AI-driven insights with graceful fallback handling.
+This project automates browser interactions to crawl structured quote data, performs statistical analysis, exposes RESTful APIs, and visualizes results through an interactive dashboard.
 
-> ⚡ Not just a crawler — this is a mini AI data pipeline.
+> 🧠 End-to-end pipeline:  
+Playwright → Data Processing → FastAPI → Streamlit Dashboard
 
 ---
 
-## 🔥 Key Features
+## 🔥 Features
 
-- 🌐 **Browser Automation** — Playwright-based dynamic page control
-- 📄 **Paginated Crawling** — automatic navigation across multiple pages
-- 🧩 **Structured Extraction** — quote text / author / tags parsing
-- 💾 **Data Persistence** — JSON storage for downstream processing
-- 📊 **Statistical Analysis** — frequency analysis (authors, tags, distribution)
-- 🤖 **LLM Integration** — AI-generated insights from collected data
-- 🛡️ **Fallback Mechanism** — prevents system failure when API quota is exceeded
-- 🧱 **Modular Design** — crawler / analyzer / LLM separated cleanly
+### 🌐 Browser Automation
+- Automated browser control using Playwright
+- Multi-page crawling (pagination support)
+
+### 📥 Data Extraction
+- Extract structured fields:
+  - 📄 page
+  - 💬 quote text
+  - 👤 author
+  - 🏷️ tags
+
+### 💾 Data Storage
+- Save raw data to `data/quotes_all.json`
+
+### 📊 Statistical Analysis
+- Total number of quotes
+- Top 10 authors
+- Top 10 tags
+- Quotes per page distribution
+- Output saved to `data/analysis_report.json`
+
+### 🔌 API Service (FastAPI)
+- `/quotes` → return all quotes
+- `/analysis` → return analysis results
+- Swagger UI for API testing
+
+### 🎨 Interactive Dashboard (Streamlit)
+- Overview metrics
+- Top authors & tags visualization
+- Quotes per page chart
+- Search & filter quotes
+- API connection status display
+
+### 🤖 LLM Integration (with fallback)
+- Optional AI-based analysis
+- Graceful fallback when quota unavailable
 
 ---
 
@@ -29,15 +59,17 @@ This project implements an **AI-enhanced browser data agent** that automates web
 
 - 🐍 Python
 - 🎭 Playwright
+- ⚡ FastAPI
+- 🎨 Streamlit
 - 📦 JSON
 - 🔢 collections.Counter
-- 🤖 OpenAI API (LLM analysis)
 
 ---
 
 ## 📂 Project Structure
 
 ```
+
 AI-Browser-Agent/
 ├── app/
 │   ├── crawler/
@@ -45,95 +77,133 @@ AI-Browser-Agent/
 │   ├── analyzer/
 │   │   ├── quotes_analyzer.py
 │   │   └── llm_analyzer.py
+│   ├── api/
+│   │   └── server.py
 │   └── main.py
+├── ui/
+│   └── dashboard.py
 ├── data/
 │   ├── quotes_all.json
 │   ├── analysis_report.json
 │   └── llm_report.txt
 ├── README.md
 └── requirements.txt
-```
 
----
-
-## ⚙️ Pipeline Architecture
-
-```
-Web → Playwright → Structured Data → Statistical Analysis → LLM Insight → Output
-```
-
----
-
-## 📊 Outputs
-
-### 💬 Quote Dataset
-
-- 100 quotes
-- Structured fields: page / text / author / tags
-
-### 📈 Analysis Report
-
-- Top authors
-- Top tags
-- Distribution across pages
-
-### 🤖 AI Insight
-
-- Natural language summary of dataset
-- Saved to `llm_report.txt`
-- Fallback enabled if API fails
-
----
-
-## 📌 Sample Output
-
-### JSON Data
-
-```json
-{
-  "page": 1,
-  "text": "...",
-  "author": "Albert Einstein",
-  "tags": ["thinking", "world"]
-}
-```
-
-### Analysis Report
-
-```json
-{
-  "total_quotes": 100,
-  "top_10_authors": [["Albert Einstein", 10]]
-}
-```
+````
 
 ---
 
 ## ▶️ How to Run
 
+### 1️⃣ Create virtual environment
+
 ```bash
 python -m venv venv
-venv\Scripts\activate
+````
 
+### 2️⃣ Activate environment
+
+```bash
+venv\Scripts\activate
+```
+
+### 3️⃣ Install dependencies
+
+```bash
 pip install -r requirements.txt
 playwright install
+```
 
+---
+
+## 🚀 Run the Project
+
+### 🧠 Step 1: Run crawler + analysis
+
+```bash
 python app/main.py
 ```
 
 ---
 
+### 🔌 Step 2: Start FastAPI backend
+
+```bash
+uvicorn app.api.server:app --reload
+```
+
+👉 Swagger UI:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+### 🎨 Step 3: Start dashboard
+
+```bash
+streamlit run ui/dashboard.py
+```
+
+---
+
+## 📊 API Endpoints
+
+| Endpoint    | Description          |
+| ----------- | -------------------- |
+| `/quotes`   | Get all quotes       |
+| `/analysis` | Get analysis results |
+
+---
+
+## 📌 Sample Output
+
+### 💬 Quote Example
+
+```json
+{
+  "page": 1,
+  "text": "The world as we have created it is a process of our thinking.",
+  "author": "Albert Einstein",
+  "tags": ["thinking", "world"]
+}
+```
+
+---
+
+### 📊 Analysis Example
+
+```json
+{
+  "total_quotes": 100,
+  "top_10_authors": [["Albert Einstein", 10]],
+  "top_10_tags": [["love", 14]]
+}
+```
+
+---
+
+## 📸 Demo
+
+> Dashboard UI preview (see screenshots in repository)
+
+---
+
 ## 🔮 Future Improvements
 
-- 🗄️ PostgreSQL storage
-- 🤖 Structured LLM output (JSON instead of text)
-- 🌍 Multi-site crawling
-- 🛡️ Anti-bot handling
-- ⚡ FastAPI service
-- 🐳 Docker deployment
+* 🧠 Enhance LLM-based insights
+* 🗄️ Add PostgreSQL storage
+* 🌍 Support multiple websites
+* 🛡️ Add login / anti-bot handling
+* 🐳 Docker deployment
+* ⚡ FastAPI → production-ready service
 
 ---
 
 ## 👩‍💻 Author
 
 Catherine 💅
+
+```
+```
