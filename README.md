@@ -23,22 +23,18 @@ It supports:
 
 ---
 
-## 📸 Dashboard Preview
+## 📸 System Preview
 
-<img width="1919" height="965" alt="dca7bbcff0db6669db87f0e34dbfcc3e" src="https://github.com/user-attachments/assets/68c9cfbe-916d-4c44-913a-5025d4589c19" />
+<img width="1919" height="965" alt="dca7bbcff0db6669db87f0e34dbfcc3e" src="https://github.com/user-attachments/assets/ad217ca0-7a14-49d1-b3a5-8080469093a4" />
+<img width="1919" height="951" alt="1f15aca86caae514f79034199381b1ac" src="https://github.com/user-attachments/assets/4c69b631-f527-415a-bcd9-f267d7fcc263" />
+<img width="1919" height="924" alt="80564177ecaff58f28426b304099491e" src="https://github.com/user-attachments/assets/ec387909-defb-4700-a1f3-87df08afa77b" />
+<img width="1919" height="914" alt="61026ec5e7ec7e695f038cd3760e5fea" src="https://github.com/user-attachments/assets/8ff7f053-47d5-48d6-bea2-c3522b2c5b27" />
+<img width="1919" height="954" alt="e9a78090c76ca018cdf7e738a3f7d3a6" src="https://github.com/user-attachments/assets/2f67dcb0-862d-42ce-8e46-7489f83c420c" />
 
-
-<img width="1919" height="954" alt="e9a78090c76ca018cdf7e738a3f7d3a6" src="https://github.com/user-attachments/assets/640eee7a-1cc0-42bf-be95-cd5e5b03f136" />
-
-
-<img width="1919" height="951" alt="1f15aca86caae514f79034199381b1ac" src="https://github.com/user-attachments/assets/a7511319-aa58-4eb8-be00-5df1c97a8ee7" />
-
-
-<img width="1919" height="924" alt="80564177ecaff58f28426b304099491e" src="https://github.com/user-attachments/assets/e781b0a8-2226-43ef-a06c-3d2eeeae16ed" />
-
-
-<img width="1919" height="914" alt="61026ec5e7ec7e695f038cd3760e5fea" src="https://github.com/user-attachments/assets/fab3ab97-de6b-40c6-bfda-79ee64478beb" />
-
+<img width="1919" height="948" alt="ae50b060b9cfbe0ceb052bc363632bf3" src="https://github.com/user-attachments/assets/25a018ea-92b4-4511-b6ea-b5946e064875" />
+<img width="1919" height="922" alt="0300f763fd9d8e057c4e39b5b8c20adc" src="https://github.com/user-attachments/assets/b310ddfc-98a9-432d-b210-a1e1f90bbd20" />
+<img width="1919" height="916" alt="858f867dcaf27837bd38e7defb49838b" src="https://github.com/user-attachments/assets/cb79fa4d-a545-43b8-a117-f38dad13ab98" />
+<img width="1919" height="921" alt="1d16c65fa1fc170bccf838cf82d9b901" src="https://github.com/user-attachments/assets/073f316c-4af8-4d5e-a338-19dfe1fc9a6f" />
 
 ---
 
