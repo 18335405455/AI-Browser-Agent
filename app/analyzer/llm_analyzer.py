@@ -100,3 +100,29 @@ def analyze_quote_with_llm(
         "ai_tone": tone,
         "ai_summary": summary
     }
+
+
+def analyze_quotes_with_llm(quotes: List[Dict]) -> str:
+    results = []
+
+    for item in quotes:
+        quote = item.get("quote", "")
+        author = item.get("author", "")
+        tags = item.get("tags", [])
+
+        ai_result = analyze_quote_with_llm(
+            quote=quote,
+            author=author,
+            tags=tags
+        )
+
+        results.append(
+            f'Quote: {quote}\n'
+            f'Author: {author}\n'
+            f'Theme: {ai_result["ai_theme"]}\n'
+            f'Sentiment: {ai_result["ai_sentiment"]}\n'
+            f'Tone: {ai_result["ai_tone"]}\n'
+            f'Summary: {ai_result["ai_summary"]}\n'
+        )
+
+    return ("\n" + "-" * 50 + "\n").join(results)
