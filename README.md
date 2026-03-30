@@ -34,6 +34,9 @@ It supports:
 <img width="1919" height="951" alt="1f15aca86caae514f79034199381b1ac" src="https://github.com/user-attachments/assets/a7511319-aa58-4eb8-be00-5df1c97a8ee7" />
 
 
+<img width="1919" height="924" alt="80564177ecaff58f28426b304099491e" src="https://github.com/user-attachments/assets/e781b0a8-2226-43ef-a06c-3d2eeeae16ed" />
+
+
 <img width="1919" height="914" alt="61026ec5e7ec7e695f038cd3760e5fea" src="https://github.com/user-attachments/assets/fab3ab97-de6b-40c6-bfda-79ee64478beb" />
 
 
