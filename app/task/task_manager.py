@@ -13,6 +13,15 @@ def now_str() -> str:
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
+def normalize_mode(mode: Optional[str]) -> str:
+    """
+    兼容前端可能传来的 default。
+    """
+    if mode in (None, "", "default"):
+        return "local"
+    return str(mode)
+
+
 def get_task_file(task_id: str) -> Path:
     return TASKS_DIR / f"{task_id}.json"
 
@@ -45,7 +54,8 @@ def list_tasks() -> List[Dict[str, Any]]:
     return tasks
 
 
-def create_task(mode: str = "default", pages: int = 3) -> Dict[str, Any]:
+def create_task(mode: str = "local", pages: int = 3) -> Dict[str, Any]:
+    mode = normalize_mode(mode)
     task_id = str(uuid4())[:8]
 
     task = {
@@ -98,15 +108,13 @@ def update_task_error(task_id: str, error: str) -> None:
 
 def run_pipeline(mode: str, pages: int) -> Dict[str, Any]:
     """
-    完整真实业务链路：
+    完整业务链路：
     crawl -> save raw -> enrich(file mode) -> load ai result
     """
-
-    import json
-    from pathlib import Path
-
     from app.crawler.quotes_spider import crawl_quotes
     from app.analyzer.enrich_quotes import enrich_quotes
+
+    mode = normalize_mode(mode)
 
     # 1) crawl quotes
     quotes = crawl_quotes(pages=pages)
@@ -116,6 +124,8 @@ def run_pipeline(mode: str, pages: int) -> Dict[str, Any]:
 
     # 2) save raw quotes for old analyzer compatibility
     raw_path = Path("data/quotes.json")
+    raw_path.parent.mkdir(parents=True, exist_ok=True)
+
     with open(raw_path, "w", encoding="utf-8") as f:
         json.dump(quotes, f, ensure_ascii=False, indent=2)
 
@@ -149,6 +159,7 @@ def run_pipeline(mode: str, pages: int) -> Dict[str, Any]:
         "analysis_report": analysis_report,
     }
 
+
 def run_task(task_id: str) -> None:
     max_retries = 3
 
@@ -160,12 +171,11 @@ def run_task(task_id: str) -> None:
 
             update_task_status(task_id, "running")
 
-            mode = task.get("mode", "default")
+            mode = normalize_mode(task.get("mode", "local"))
             pages = int(task.get("pages", 3))
 
             result = run_pipeline(mode=mode, pages=pages)
 
-            # success
             result["retry_attempt"] = attempt
             update_task_result(task_id, result)
             update_task_status(task_id, "success")

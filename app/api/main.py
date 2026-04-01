@@ -1,7 +1,9 @@
 import json
-import os
-from fastapi import FastAPI
+
+from fastapi import FastAPI, HTTPException
+
 from app.main import run_task
+from app.task.task_manager import load_task, list_tasks
 
 app = FastAPI()
 
@@ -13,60 +15,43 @@ def root():
 
 @app.post("/tasks/run")
 def run_new_task(pages: int = 2, mode: str = "local"):
-    task_id = run_task(pages, mode)
+    try:
+        task_id = run_task(pages, mode)
+        task = load_task(task_id)
 
-    return {
-        "message": "Task started successfully",
-        "task_id": task_id,
-        "pages": pages,
-        "mode": mode
-    }
+        return {
+            "message": "Task finished",
+            "task_id": task_id,
+            "pages": pages,
+            "mode": task.get("mode", mode) if task else mode,
+            "status": task.get("status", "unknown") if task else "unknown",
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/tasks")
-def list_tasks():
-    tasks_dir = "data/tasks"
-
-    if not os.path.exists(tasks_dir):
-        return {"tasks": []}
-
-    tasks = []
-
-    for task_id in os.listdir(tasks_dir):
-        meta_path = os.path.join(tasks_dir, task_id, "meta.json")
-
-        if os.path.exists(meta_path):
-            with open(meta_path, "r", encoding="utf-8") as f:
-                meta = json.load(f)
-                tasks.append(meta)
-
-    tasks.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-
-    return {"tasks": tasks}
+def get_tasks():
+    return {"tasks": list_tasks()}
 
 
 @app.get("/tasks/{task_id}")
-def get_task(task_id: str):
-    task_dir = os.path.join("data", "tasks", task_id)
-    meta_path = os.path.join(task_dir, "meta.json")
-    quotes_path = os.path.join(task_dir, "quotes_all.json")
-    report_path = os.path.join(task_dir, "llm_report.txt")
+def get_task_detail(task_id: str):
+    task = load_task(task_id)
 
-    if not os.path.exists(meta_path):
-        return {"error": "Task not found"}
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
 
-    with open(meta_path, "r", encoding="utf-8") as f:
-        meta = json.load(f)
+    result = task.get("result") or {}
+    quotes = result.get("quotes", [])
+    analysis_report = result.get("analysis_report", "")
 
-    quotes = []
-    if os.path.exists(quotes_path):
-        with open(quotes_path, "r", encoding="utf-8") as f:
-            quotes = json.load(f)
+    if isinstance(analysis_report, (dict, list)):
+        report = json.dumps(analysis_report, ensure_ascii=False, indent=2)
+    else:
+        report = str(analysis_report) if analysis_report is not None else ""
 
-    report = ""
-    if os.path.exists(report_path):
-        with open(report_path, "r", encoding="utf-8") as f:
-            report = f.read()
+    meta = {k: v for k, v in task.items() if k != "result"}
 
     return {
         "meta": meta,
