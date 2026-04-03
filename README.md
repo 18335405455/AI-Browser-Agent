@@ -52,7 +52,7 @@ It provides:
 
 ## 🔄 Task Lifecycle
 <p align="center">
-  <img width="160" alt="task lifecycle" src="./assets/task_lifecycle.png" />
+  <img width="120" alt="task lifecycle" src="./assets/task_lifecycle.png" />
 </p>
 
 ---
