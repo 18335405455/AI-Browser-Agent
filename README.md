@@ -1,255 +1,226 @@
-# 🤖 AI Browser Agent Workflow Platform
+# 🚀 AI Browser Agent Workflow Platform
 
-An AI-powered, task-driven browser automation workflow platform for structured crawling, semantic enrichment, task lifecycle orchestration, and real-time dashboard observability.
+An end-to-end **AI-powered browser workflow and technical hiring radar platform** built with **FastAPI, Playwright, Streamlit, and structured trend analytics pipelines**.
 
----
-
-## 🌟 Overview
-
-This project upgrades a traditional Playwright crawler script into a **production-style task-driven AI workflow platform prototype**.
-
-It provides:
-
-* Automated multi-page browser crawling
-* Task lifecycle orchestration
-* Local / optional LLM semantic enrichment
-* Streamlit real-time dashboard
-* Historical task querying
-* RESTful APIs powered by FastAPI
-* Persistent JSON-based task storage
-* Fault-tolerant, retry-ready workflow design
-
-> Workflow Pipeline:
-> **Playwright → Task Manager → FastAPI → Streamlit Dashboard → Persistent Task Storage**
+This platform transforms global career pages into **actionable technical hiring intelligence**, enabling task-driven crawling, role filtering, trend summarization, historical snapshot accumulation, and visual dashboard monitoring.
 
 ---
 
-## 📸 System Preview
+## ✨ Key Highlights
 
-### 🖥️ Dashboard Overview
-<img width="1919" height="961" alt="3bebb1a5f6d45559473bb835ba80cba8" src="https://github.com/user-attachments/assets/5e20e563-d095-4b8e-85f1-53eee11fda6b" />
+- 🌍 Global tech hiring source parsing
+- 🤖 Playwright-powered structured job extraction
+- 🧠 Technical role filtering pipeline
+- 📈 Hiring trend analytics and keyword mining
+- 🕒 Historical snapshot persistence
+- 📊 Streamlit visual hiring radar dashboard
+- 🔌 FastAPI backend with Swagger workflow APIs
+- 📦 Task lifecycle orchestration and async scheduling
 
-<img width="1915" height="954" alt="8696eecc3f0e7ebe7e703a3052333f4e" src="https://github.com/user-attachments/assets/a44a5825-17f2-4119-a40b-312d55304445" />
+---
 
+## 🖥️ Dashboard Overview
 
-### 🔌 API Overview
+The platform provides a polished **AI workflow dashboard** for technical hiring intelligence monitoring.
 
-<img width="1200" alt="swagger api overview" src="./assets/swagger-api-overview.png" />
+![Dashboard Overview](./assets/01-dashboard-overview.png)
 
-### 🚀 Run Task via Swagger
+---
 
-<img width="1200" alt="swagger run task" src="./assets/swagger-run-task.png" />
+## 📈 Hiring Trend Analysis
+
+A dedicated trend analysis panel highlights:
+
+- total technical jobs
+- top hiring locations
+- recurring keywords
+- category distribution
+- latest snapshot metrics
+
+![Trend Analysis](./assets/02-trend-analysis-panel.png)
+
+---
+
+## 🕒 Category & History Insights
+
+The dashboard also supports:
+
+- category breakdown table
+- top keywords panel
+- trend history table
+- historical snapshot timeline
+
+![Category History](./assets/03-category-history-panel.png)
+
+---
+
+## 📋 Task Lifecycle Management
+
+All browser workflow tasks are persisted and visualized through a structured task lifecycle table.
+
+Features include:
+
+- task id tracking
+- execution source
+- updated time
+- success status
+- lifecycle history
+
+![Task Lifecycle](./assets/04-task-lifecycle-table.png)
 
 ---
 
 ## 🧠 System Architecture
 
-<img width="1200" alt="system architecture" src="./assets/system_architecture.png" />
+The entire platform follows a complete data pipeline:
+
+Career Source → Parser → Storage → Filter → Analyzer → Summary + History → Dashboard
+
+![System Architecture](./assets/05-system-architecture.png)
+
+### Pipeline Modules
+
+- **Career Pages** → global hiring sources
+- **Playwright Job Parser** → structured extraction
+- **Raw Jobs Storage** → JSON persistence
+- **Tech Job Filter** → AI / backend / infra role selection
+- **Trend Analyzer** → location + keyword + category mining
+- **Trend Summary** → latest hiring snapshot
+- **Trend History** → daily accumulation
+- **Dashboard** → visual intelligence delivery
 
 ---
 
-## 🔄 Task Lifecycle
-<p align="center">
-  <img width="120" alt="task lifecycle" src="./assets/task_lifecycle.png" />
-</p>
+## 🔌 Backend API Surface
+
+The FastAPI backend exposes a production-style API workflow.
+
+### Swagger Overview
+![Swagger API](./assets/06-api-swagger-overview.png)
+
+### Task Run Request
+A task can be created dynamically for a technical hiring radar workflow.
+
+![Task Run Request](./assets/07-api-task-run-request.png)
+
+### Task Run Response
+Successful task creation returns:
+
+- `task_id`
+- `pending` lifecycle state
+- background scheduling confirmation
+
+![Task Run Response](./assets/08-api-task-run-response.png)
 
 ---
 
-## 🔥 Core Features
+## ⚙️ Tech Stack
 
-### 🌐 Browser Automation (Playwright)
+### Backend
+- FastAPI
+- Uvicorn
+- Playwright
+- Python 3.11
 
-* Automated multi-page crawling
-* Configurable crawl depth via `pages`
-* Structured extraction of:
+### Frontend
+- Streamlit
+- Custom dashboard components
+- Metrics panels
+- Trend history visual blocks
 
-  * quote text
-  * author
-  * tags
-  * page metadata
+### Data Layer
+- JSON persistence
+- task snapshots
+- trend summaries
+- historical timeline accumulation
 
----
-
-### ⚡ Task Lifecycle Management
-
-Each task follows a complete lifecycle:
-
-```text
-Create Task → Pending → Running → Crawling → Analyzing → Success / Failed → Task History
-```
-
-Core capabilities:
-
-* Unique `task_id`
-* Persistent task-scoped storage
-* Historical task traceability
-* Status-based dashboard filtering
-* FastAPI background execution
-* Retry-ready workflow orchestration
+### Workflow
+- task lifecycle orchestration
+- async scheduling
+- source-based pipelines
+- hiring trend analytics
 
 ---
 
-### 🧠 Semantic Enrichment Pipeline
+## 📊 Example Use Case
 
-Each crawled quote can be enriched with:
+### Global Technical Hiring Radar
+Currently tracks:
 
-* `ai_theme`
-* `ai_sentiment`
-* `ai_tone`
-* `ai_summary`
+- Databricks
+- global technical roles
+- AI / backend / infra / platform trends
+- hiring hotspot cities
+- keyword demand evolution
 
-Task-level aggregated analysis includes:
+Future tracked sources can be expanded to:
 
-* total quote count
-* unique authors
-* total tags
-* author statistics
-* task summary report
-
----
-
-### 📊 Real-Time Dashboard (Streamlit)
-
-#### 📋 Task Control
-
-* Configure pages
-* Select execution mode
-* Create tasks
-* Instant status feedback
-
-#### 📂 Task History
-
-* Task list
-* Lifecycle status
-* Expandable task detail
-* Result JSON preview
-* Timestamps
-* Report visibility
+- Anthropic
+- OpenAI
+- Cloudflare
+- Vercel
 
 ---
 
-### 🔌 FastAPI APIs
+## 🎯 Project Value
 
-RESTful endpoints:
+This project demonstrates end-to-end capability across:
 
-* `/tasks/run`
-* `/tasks`
-* `/tasks/{task_id}`
+- browser automation
+- backend API engineering
+- data pipeline design
+- trend analytics
+- task orchestration
+- dashboard productization
+- portfolio-grade documentation
 
-Additional features:
+It is designed as a **resume-ready AI engineering showcase project** for:
 
-* Swagger UI
-* Interactive testing
-* Background task execution
-* Task-level querying
-
----
-
-## 📊 Example Output
-
-```json
-{
-  "text": "The world as we have created it is a process of our thinking.",
-  "author": "Albert Einstein",
-  "tags": ["change", "thinking"],
-  "ai_theme": "deep-thoughts, change",
-  "ai_sentiment": "neutral",
-  "ai_tone": "philosophical",
-  "ai_summary": "A reflective quote about how human thinking shapes reality."
-}
-```
+- AI Application Engineer
+- Full Stack AI Engineer
+- AI Workflow Engineer
+- Platform Engineer Intern roles
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Run Locally
 
-* Python
-* Playwright
-* FastAPI
-* Streamlit
-* JSON persistent storage
-* Local LLM / optional API LLM
-* requests
-
----
-
-## 📂 Project Structure
-
-```text
-AI-Browser-Agent/
-├── app/
-│   ├── crawler/
-│   ├── analyzer/
-│   ├── api/
-│   └── task/
-├── ui/
-│   └── dashboard.py
-├── data/
-│   └── tasks/
-├── assets/
-│   ├── dashboard-overview.png
-│   ├── dashboard-task-detail.png
-│   ├── swagger-api-overview.png
-│   ├── swagger-run-task.png
-│   ├── system_architecture.png
-│   └── task_lifecycle.png
-├── requirements.txt
-└── README.md
-```
-
----
-
-## ▶️ Getting Started
-
+### 1) Backend
 ```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-playwright install
+uvicorn app.api.main:app --reload
 ```
 
----
-
-## 🚀 Run the Project
-
-### Start FastAPI
-
-```bash
-uvicorn app.api.server:app --reload
-```
-
-### Start Dashboard
-
+### 2) Dashboard
 ```bash
 streamlit run ui/dashboard.py
 ```
 
----
-
-## 📡 API Endpoints
-
-| Endpoint           | Description          |
-| ------------------ | -------------------- |
-| `/tasks/run`       | Create task          |
-| `/tasks`           | List task history    |
-| `/tasks/{task_id}` | Retrieve task detail |
+### 3) Swagger Docs
+```text
+http://127.0.0.1:8000/docs
+```
 
 ---
 
-## 🚧 Future Improvements
+## 📌 Future Roadmap
 
-* PostgreSQL persistence
-* Celery / Redis distributed queue
-* Docker deployment
-* Multi-site crawling adapters
-* Vector search + RAG layer
-* Task export APIs
-* Observability metrics
+- multi-company source expansion
+- trend delta comparison
+- time-series line charts
+- hiring growth alerts
+- AI-generated trend reports
+- recruiter intelligence workflows
+- scheduled daily automation
+- cloud deployment pipeline
 
 ---
 
-## 👩‍💻 Author
+## ⭐ Portfolio Note
 
-Catherine ✨
+This repository is intentionally designed as a **portfolio-grade AI workflow platform case study**, emphasizing:
 
-> Not just a crawler — but a **mini task-driven AI workflow platform prototype**.
+- engineering clarity
+- product-level UX
+- system architecture transparency
+- API execution proof
+- visual storytelling for technical interviews
