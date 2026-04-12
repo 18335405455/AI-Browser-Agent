@@ -1,0 +1,65 @@
+[
+  {
+    "job_title": "English (United Kingdom)",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/en-gb/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Deutsch",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/de-de/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Español (Latinoamérica)",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/es-la/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Español (España)",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/es-es/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Français",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/fr-fr/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Italiano",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/it-it/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Polski",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/pl-pl/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Português (Brasil)",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/pt-br/careers/jobs/",
+    "source": "cloudflare"
+  },
+  {
+    "job_title": "Русский",
+    "company": "Cloudflare",
+    "location": "",
+    "apply_url": "https://www.cloudflare.com/ru-ru/careers/jobs/",
+    "source": "cloudflare"
+  }
+]

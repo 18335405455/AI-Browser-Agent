@@ -39,13 +39,8 @@ def inject_global_styles() -> None:
             color: var(--text);
         }
 
-        [data-testid="stHeader"] {
-            background: transparent;
-        }
-
-        [data-testid="stSidebar"] {
-            display: none;
-        }
+        [data-testid="stHeader"] { background: transparent; }
+        [data-testid="stSidebar"] { display: none; }
 
         .block-container {
             padding-top: 1.1rem;
@@ -105,7 +100,6 @@ def inject_global_styles() -> None:
             padding: 0 16px;
             color: var(--muted);
             font-size: 13px;
-            letter-spacing: 0.2px;
         }
 
         .browser-actions {
@@ -119,13 +113,6 @@ def inject_global_styles() -> None:
             border-radius: 10px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .main-grid {
-            display: grid;
-            grid-template-columns: 82px minmax(0, 1fr) 360px;
-            gap: 14px;
-            align-items: start;
         }
 
         .side-nav {
@@ -173,7 +160,6 @@ def inject_global_styles() -> None:
             color: #d7def3;
             background: rgba(255,255,255,0.025);
             border: 1px solid rgba(255,255,255,0.045);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.025);
             font-size: 20px;
         }
 
@@ -183,47 +169,10 @@ def inject_global_styles() -> None:
             box-shadow: 0 0 28px rgba(168,85,247,0.30);
         }
 
-        .content-col {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .panel {
-            background: var(--panel);
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: var(--shadow);
-            border-radius: var(--radius-xl);
-            padding: 18px 18px 16px 18px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .panel::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(168,85,247,0.10), transparent 28%);
-            pointer-events: none;
-        }
-
-        .panel-soft {
-            background: var(--panel-2);
-        }
-
-        .panel-title-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
         .panel-title {
             font-size: 18px;
             font-weight: 700;
             color: var(--text);
-            letter-spacing: 0.2px;
         }
 
         .panel-subtitle {
@@ -234,7 +183,6 @@ def inject_global_styles() -> None:
         .badge-glow {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             padding: 6px 10px;
             border-radius: 999px;
             border: 1px solid rgba(168,85,247,0.22);
@@ -243,20 +191,14 @@ def inject_global_styles() -> None:
             font-size: 12px;
         }
 
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-
         .metric-card {
             background: linear-gradient(180deg, rgba(12,17,31,0.98), rgba(9,12,23,0.98));
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 22px;
             padding: 16px;
-            position: relative;
             min-height: 130px;
             box-shadow: var(--shadow);
+            position: relative;
             overflow: hidden;
         }
 
@@ -264,18 +206,6 @@ def inject_global_styles() -> None:
             background:
                 radial-gradient(circle at 85% 20%, rgba(192,132,252,0.26), transparent 18%),
                 linear-gradient(135deg, rgba(76,29,149,0.92), rgba(23,37,84,0.92));
-            border: 1px solid rgba(216,180,254,0.18);
-        }
-
-        .metric-card::after {
-            content: "";
-            position: absolute;
-            right: -20px;
-            top: -20px;
-            width: 110px;
-            height: 110px;
-            background: radial-gradient(circle, rgba(168,85,247,0.13), transparent 60%);
-            pointer-events: none;
         }
 
         .metric-label {
@@ -287,9 +217,7 @@ def inject_global_styles() -> None:
 
         .metric-value {
             font-size: 40px;
-            line-height: 1;
             font-weight: 800;
-            letter-spacing: -1px;
             color: white;
             margin-bottom: 8px;
         }
@@ -297,7 +225,6 @@ def inject_global_styles() -> None:
         .metric-foot {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             color: var(--muted);
             font-size: 12px;
         }
@@ -312,287 +239,69 @@ def inject_global_styles() -> None:
             height: 8px;
             border-radius: 50%;
             background: var(--green);
+            display: inline-block;
             box-shadow: 0 0 12px rgba(34,197,94,0.5);
-            display: inline-block;
         }
 
-        .two-col {
-            display: grid;
-            grid-template-columns: 1.05fr 1.15fr;
-            gap: 14px;
-        }
-
-        .right-col {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .task-item {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .task-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .task-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 6px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .task-meta {
-            color: var(--muted);
-            font-size: 12px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .tiny-dot {
-            display: inline-block;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            box-shadow: 0 0 10px rgba(168,85,247,0.45);
-            margin-right: 8px;
-        }
-
-        .cta-btn {
+        /* ⭐ 真按钮炫酷化 */
+        div.stButton > button {
             width: 100%;
-            padding: 13px 16px;
+            height: 56px;
             border-radius: 999px;
+            border: 1px solid rgba(168, 85, 247, 0.28);
             background: linear-gradient(90deg, #6d28d9 0%, #a855f7 100%);
-            color: white;
-            text-align: center;
+            color: #ffffff;
+            font-size: 16px;
             font-weight: 700;
+            box-shadow:
+                0 10px 30px rgba(109,40,217,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            transition: all 0.18s ease;
             margin-top: 16px;
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: 0 10px 30px rgba(109,40,217,0.28);
         }
 
-        .ai-hero {
-            background:
-                radial-gradient(circle at 50% 0%, rgba(216,180,254,0.18), transparent 30%),
-                linear-gradient(180deg, rgba(121,58,237,0.26), rgba(52,18,102,0.22)),
-                linear-gradient(180deg, rgba(19,24,42,0.95), rgba(11,14,28,0.98));
-            border: 1px solid rgba(216,180,254,0.14);
+        div.stButton > button:hover {
+            background: linear-gradient(90deg, #7c3aed 0%, #c084fc 100%);
+            border: 1px solid rgba(216,180,254,0.35);
+            color: #ffffff;
+            box-shadow:
+                0 14px 36px rgba(168,85,247,0.34),
+                inset 0 1px 0 rgba(255,255,255,0.12);
         }
 
-        .ai-title {
-            font-size: 32px;
-            line-height: 1.1;
-            font-weight: 800;
-            margin: 8px 0 10px 0;
-            text-align: center;
+        div.stButton > button:focus,
+        div.stButton > button:focus-visible {
+            outline: none;
+            box-shadow:
+                0 0 0 1px rgba(216,180,254,0.45),
+                0 14px 36px rgba(168,85,247,0.34);
+            color: #ffffff;
         }
 
-        .ai-caption {
-            text-align: center;
-            color: var(--muted);
-            font-size: 13px;
-            margin-bottom: 14px;
+        div.stButton > button:active {
+            transform: translateY(1px);
         }
 
-        .pill-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 14px;
+        /* success 提示框美化 */
+        div[data-testid="stAlert"] {
+            border-radius: 18px !important;
+            border: 1px solid rgba(34,197,94,0.20) !important;
+            background: linear-gradient(90deg, rgba(10,50,35,0.75), rgba(8,30,24,0.75)) !important;
+            color: #dcfce7 !important;
         }
 
-        .pill {
-            padding: 7px 10px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.07);
-            color: #ebe8ff;
-            font-size: 12px;
-        }
-
-        .ai-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .ai-box {
-            min-height: 120px;
-            border-radius: 20px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-            border: 1px solid rgba(255,255,255,0.07);
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
-            color: #f5f3ff;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-        }
-
-        .ai-box-title {
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .prompt-bar {
-            margin-top: 14px;
-            height: 52px;
-            border-radius: 999px;
-            background: rgba(8,12,22,0.88);
-            border: 1px solid rgba(168,85,247,0.25);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10px 0 16px;
-            color: var(--muted);
-        }
-
-        .send-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            box-shadow: 0 0 18px rgba(168,85,247,0.35);
-        }
-
-        .table-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .table-wrap th {
-            text-align: left;
-            color: var(--muted);
-            font-size: 12px;
-            font-weight: 600;
-            padding: 10px 8px 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .table-wrap td {
-            font-size: 13px;
-            color: #edf1ff;
-            padding: 12px 8px 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            vertical-align: top;
-        }
-
-        .name-main {
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .name-sub {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .status-chip {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .status-running {
-            background: rgba(34,197,94,0.12);
-            color: #86efac;
-        }
-
-        .status-pending {
-            background: rgba(245,158,11,0.12);
-            color: #fcd34d;
-        }
-
-        .status-failed {
-            background: rgba(251,113,133,0.12);
-            color: #fda4af;
-        }
-
-        .status-completed {
-            background: rgba(139,92,246,0.14);
-            color: #d8b4fe;
-        }
-
-        .section-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
-        .tab-chip {
-            padding: 7px 12px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .tab-chip.active {
-            color: white;
-            border: 1px solid rgba(168,85,247,0.22);
-            background: rgba(124,58,237,0.22);
-            box-shadow: 0 0 18px rgba(124,58,237,0.18);
-        }
-
-        div[data-testid="stPlotlyChart"] {
-            background: transparent !important;
+        /* JSON 区域美化 */
+        div[data-testid="stJson"] {
+            border-radius: 18px;
+            border: 1px solid rgba(168,85,247,0.12);
+            background: rgba(8,12,22,0.78);
+            padding: 8px;
         }
 
         .footer-note {
             color: var(--muted-2);
             font-size: 11px;
             margin-top: 10px;
-        }
-
-        @media (max-width: 1280px) {
-            .main-grid {
-                grid-template-columns: 72px minmax(0, 1fr);
-            }
-            .right-col {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 980px) {
-            .metrics-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-            .side-nav {
-                min-height: auto;
-                flex-direction: row;
-                align-items: center;
-                padding: 10px;
-            }
-            .nav-stack {
-                flex-direction: row;
-                margin-top: 0;
-            }
         }
         </style>
         """,

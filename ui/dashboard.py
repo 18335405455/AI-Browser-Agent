@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from typing import Any
+import json
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -43,23 +45,10 @@ def safe_get_real_data() -> dict[str, Any]:
     }
 
     try:
-        from api_client import list_tasks, get_dashboard_data  # type: ignore
+        from api_client import get_tasks  # type: ignore
 
         try:
-            dashboard_payload = get_dashboard_data()
-            if isinstance(dashboard_payload, dict):
-                metrics = dashboard_payload.get("metrics", {})
-                data["metrics"] = {
-                    "clients": str(metrics.get("clients", data["metrics"]["clients"])),
-                    "revenue": str(metrics.get("revenue", data["metrics"]["revenue"])),
-                    "projects": str(metrics.get("projects", data["metrics"]["projects"])),
-                    "priority": str(metrics.get("priority", data["metrics"]["priority"])),
-                }
-        except Exception:
-            pass
-
-        try:
-            tasks_payload = list_tasks()
+            tasks_payload = get_tasks()
             if isinstance(tasks_payload, list) and tasks_payload:
                 rows: list[dict[str, Any]] = []
                 queue: list[dict[str, Any]] = []
@@ -146,9 +135,210 @@ def simple_panel_title(title: str, subtitle: str = "", badge: str = "") -> None:
         )
 
 
+def _project_root() -> Path:
+    return Path(__file__).resolve().parent.parent
+
+
+def _read_json_from_db(filename: str) -> dict[str, Any] | list[Any] | None:
+    try:
+        file_path = _project_root() / "app" / "db" / filename
+        if file_path.exists():
+            return json.loads(file_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return None
+
+
+def _read_trend_summary(filename: str = "databricks_trend_summary.json") -> dict[str, Any] | None:
+    data = _read_json_from_db(filename)
+    return data if isinstance(data, dict) else None
+
+
+def _read_trend_history(filename: str = "databricks_trend_history.json") -> list[dict[str, Any]]:
+    data = _read_json_from_db(filename)
+    if isinstance(data, list):
+        return [item for item in data if isinstance(item, dict)]
+    return []
+
+
+def _format_category_name(raw: str) -> str:
+    mapping = {
+        "ai_ml": "AI / ML",
+        "data_platform": "Data Platform",
+        "infra_cloud": "Infra / Cloud",
+        "software_engineering": "Software Engineering",
+        "customer_facing_technical": "Customer-Facing Technical",
+        "other": "Other",
+    }
+    return mapping.get(raw, raw.replace("_", " ").title())
+
+
+def render_trend_analysis(summary: dict[str, Any] | None, history: list[dict[str, Any]]) -> None:
+    st.markdown('<div style="height:10px;"></div>', unsafe_allow_html=True)
+    st.markdown("### Tech Hiring Trend Result")
+
+    if not summary:
+        st.warning(
+            "No Databricks trend summary found yet. "
+            "Please run `python -m app.sources.job_trend_analyzer` first."
+        )
+        return
+
+    company = str(summary.get("company", "Unknown"))
+    captured_at = str(summary.get("captured_at", "--"))
+    total_tech_jobs = summary.get("total_tech_jobs", "--")
+    top_locations = summary.get("top_locations", [])
+    top_keywords = summary.get("top_keywords", [])
+    category_breakdown = summary.get("category_breakdown", {})
+    history_count = len(history)
+
+    info_col1, info_col2 = st.columns(2, gap="small")
+    with info_col1:
+        st.markdown(
+            f"""
+            <div style="
+                border:1px solid rgba(255,255,255,0.06);
+                border-radius:18px;
+                background:rgba(8,12,22,0.72);
+                padding:14px 16px;
+                margin-bottom:12px;
+            ">
+                <div style="color:#9da7c2;font-size:12px;margin-bottom:6px;">Company</div>
+                <div style="color:#f4f7ff;font-size:18px;font-weight:700;">{company}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with info_col2:
+        st.markdown(
+            f"""
+            <div style="
+                border:1px solid rgba(255,255,255,0.06);
+                border-radius:18px;
+                background:rgba(8,12,22,0.72);
+                padding:14px 16px;
+                margin-bottom:12px;
+            ">
+                <div style="color:#9da7c2;font-size:12px;margin-bottom:6px;">Analysis Scope</div>
+                <div style="color:#d8b4fe;font-size:18px;font-weight:700;">Technical Hiring Radar</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    st.markdown(
+        f"""
+        <div style="
+            border:1px solid rgba(168,85,247,0.16);
+            border-radius:20px;
+            background:linear-gradient(180deg, rgba(16,22,38,0.86), rgba(8,12,22,0.92));
+            padding:16px 18px;
+            margin-bottom:14px;
+        ">
+            <div style="color:#9da7c2;font-size:12px;margin-bottom:8px;">Summary</div>
+            <div style="color:#f4f7ff;font-size:14px;line-height:1.8;">
+                Databricks technical hiring radar is active. Current parsed technical openings: <b>{total_tech_jobs}</b>.
+                Latest snapshot date: <b>{captured_at}</b>. Historical snapshots stored: <b>{history_count}</b>.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    metric_a, metric_b, metric_c = st.columns(3, gap="small")
+    with metric_a:
+        st.metric("Total Tech Jobs", total_tech_jobs)
+    with metric_b:
+        st.metric("Top Location Count", top_locations[0]["count"] if top_locations else "--")
+    with metric_c:
+        st.metric("Keyword Samples", len(top_keywords))
+
+    extra_col1, extra_col2, extra_col3 = st.columns(3, gap="small")
+    with extra_col1:
+        st.metric("Tracked Source", company)
+    with extra_col2:
+        st.metric("Category Types", len(category_breakdown))
+    with extra_col3:
+        st.metric("Captured At", captured_at)
+
+    st.markdown(
+        f"""
+        <div style="margin-top:6px;margin-bottom:14px;color:#9da7c2;font-size:13px;">
+            History Snapshots: <span style="color:#f4f7ff;font-weight:700;">{history_count}</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    if top_locations:
+        st.markdown("#### Top Locations")
+        for item in top_locations[:5]:
+            st.markdown(f"- {item.get('name', '--')}: {item.get('count', '--')}")
+
+    if top_keywords:
+        st.markdown("#### Top Keywords")
+        keyword_text = " · ".join(
+            [f"{item.get('name', '--')} ({item.get('count', '--')})" for item in top_keywords[:10]]
+        )
+        st.markdown(
+            f"""
+            <div style="
+                border:1px solid rgba(255,255,255,0.06);
+                border-radius:16px;
+                background:rgba(8,12,22,0.68);
+                padding:14px 16px;
+                margin-bottom:12px;
+                color:#f4f7ff;
+                line-height:1.8;
+            ">
+                {keyword_text}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    if category_breakdown:
+        st.markdown("#### Category Breakdown")
+        category_df = pd.DataFrame(
+            [
+                {
+                    "Category": _format_category_name(k),
+                    "Count": v,
+                }
+                for k, v in category_breakdown.items()
+            ]
+        )
+        st.dataframe(category_df, use_container_width=True, hide_index=True)
+
+    if history:
+        st.markdown("#### Trend History")
+        history_df = pd.DataFrame(
+            [
+                {
+                    "Captured At": item.get("captured_at", "--"),
+                    "Company": item.get("company", "--"),
+                    "Total Tech Jobs": item.get("total_tech_jobs", "--"),
+                    "Top Location": item.get("top_location", "--"),
+                    "Top Location Count": item.get("top_location_count", "--"),
+                }
+                for item in history
+            ]
+        )
+        st.dataframe(history_df, use_container_width=True, hide_index=True)
+
+    with st.expander("View raw trend summary JSON", expanded=False):
+        st.json(summary)
+
+    with st.expander("View raw trend history JSON", expanded=False):
+        st.json(history)
+
+
 def main() -> None:
     inject_global_styles()
     payload = safe_get_real_data()
+    trend_summary = _read_trend_summary()
+    trend_history = _read_trend_history()
 
     st.markdown('<div class="app-shell">', unsafe_allow_html=True)
     browser_shell_header()
@@ -164,8 +354,23 @@ def main() -> None:
         left_sub, right_sub = st.columns([1.0, 1.15], gap="small")
 
         with left_sub:
-            simple_panel_title("Revenue Analytics")
-            analysis_summary_panel()
+            simple_panel_title("Tech Hiring Trend Analysis")
+            run_clicked = analysis_summary_panel()
+
+            if run_clicked:
+                latest_summary = _read_trend_summary()
+                latest_history = _read_trend_history()
+                if latest_summary:
+                    st.success("Trend summary loaded successfully.")
+                    render_trend_analysis(latest_summary, latest_history)
+                else:
+                    st.warning(
+                        "No trend summary file found yet. "
+                        "Please run `python -m app.sources.job_trend_analyzer` first."
+                    )
+            else:
+                if trend_summary:
+                    render_trend_analysis(trend_summary, trend_history)
 
         with right_sub:
             simple_panel_title("Earnings Last 30 Days", badge="Live")

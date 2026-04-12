@@ -1,0 +1,137 @@
+{
+  "company": "Databricks",
+  "captured_at": "2026-04-12",
+  "total_tech_jobs": 439,
+  "top_locations": [
+    {
+      "name": "Bengaluru, India",
+      "count": 70
+    },
+    {
+      "name": "San Francisco, California",
+      "count": 55
+    },
+    {
+      "name": "Mountain View, California",
+      "count": 54
+    },
+    {
+      "name": "United States",
+      "count": 26
+    },
+    {
+      "name": "Bellevue, Washington",
+      "count": 21
+    },
+    {
+      "name": "Amsterdam, Netherlands",
+      "count": 20
+    },
+    {
+      "name": "Seattle, Washington",
+      "count": 18
+    },
+    {
+      "name": "London, United Kingdom",
+      "count": 16
+    },
+    {
+      "name": "Singapore",
+      "count": 12
+    },
+    {
+      "name": "Belgrade, Serbia",
+      "count": 11
+    }
+  ],
+  "top_keywords": [
+    {
+      "name": "software",
+      "count": 154
+    },
+    {
+      "name": "architect",
+      "count": 52
+    },
+    {
+      "name": "backend",
+      "count": 38
+    },
+    {
+      "name": "field",
+      "count": 31
+    },
+    {
+      "name": "security",
+      "count": 22
+    },
+    {
+      "name": "communications",
+      "count": 19
+    },
+    {
+      "name": "media",
+      "count": 19
+    },
+    {
+      "name": "entertainment",
+      "count": 19
+    },
+    {
+      "name": "games",
+      "count": 19
+    },
+    {
+      "name": "fullstack",
+      "count": 18
+    },
+    {
+      "name": "retail",
+      "count": 17
+    },
+    {
+      "name": "resident",
+      "count": 17
+    },
+    {
+      "name": "infrastructure",
+      "count": 16
+    },
+    {
+      "name": "services",
+      "count": 11
+    },
+    {
+      "name": "enterprise",
+      "count": 11
+    },
+    {
+      "name": "forward",
+      "count": 11
+    },
+    {
+      "name": "deployed",
+      "count": 11
+    },
+    {
+      "name": "fde",
+      "count": 10
+    },
+    {
+      "name": "account",
+      "count": 10
+    },
+    {
+      "name": "executive",
+      "count": 10
+    }
+  ],
+  "category_breakdown": {
+    "software_engineering": 164,
+    "ai_ml": 120,
+    "data_platform": 114,
+    "other": 87,
+    "infra_cloud": 49,
+    "customer_facing_technical": 26
+  }
+}

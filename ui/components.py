@@ -74,7 +74,6 @@ def metric_card(title: str, value: str, subtext: str, featured: bool = False) ->
     )
 
 
-# 保留兼容，避免 dashboard.py import 出错；不再用于复杂嵌套
 def panel_open(title: str, subtitle: str = "", badge: str = "") -> None:
     subtitle_html = f'<div class="panel-subtitle">{subtitle}</div>' if subtitle else ""
     badge_html = f'<div class="badge-glow">{badge}</div>' if badge else ""
@@ -98,7 +97,7 @@ def panel_close() -> None:
     return
 
 
-def analysis_summary_panel() -> None:
+def analysis_summary_panel() -> bool:
     legend_col1, legend_col2 = st.columns([1, 1], gap="small")
 
     with legend_col1:
@@ -134,12 +133,7 @@ def analysis_summary_panel() -> None:
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        """
-        <div class="cta-btn">Run Analysis</div>
-        """,
-        unsafe_allow_html=True,
-    )
+    return st.button("Run Analysis", use_container_width=True, key="run_analysis_btn_main")
 
 
 def render_priority_tasks_panel(tasks: list[dict[str, Any]]) -> None:

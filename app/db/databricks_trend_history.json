@@ -1,0 +1,29 @@
+[
+  {
+    "captured_at": "2026-04-12",
+    "company": "Databricks",
+    "total_tech_jobs": 439,
+    "top_location": "Bengaluru, India",
+    "top_location_count": 70,
+    "category_breakdown": {
+      "software_engineering": 164,
+      "ai_ml": 120,
+      "data_platform": 114,
+      "other": 87,
+      "infra_cloud": 49,
+      "customer_facing_technical": 26
+    },
+    "top_keywords": [
+      "software",
+      "architect",
+      "backend",
+      "field",
+      "security",
+      "communications",
+      "media",
+      "entertainment",
+      "games",
+      "fullstack"
+    ]
+  }
+]
