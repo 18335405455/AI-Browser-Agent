@@ -1,69 +1,78 @@
 # 🚀 AI Browser Agent Workflow Platform
 
-An end-to-end **AI-powered browser workflow and technical hiring radar platform** built with **FastAPI, Playwright, Streamlit, and structured trend analytics pipelines**.
+A portfolio-grade **AI-powered browser workflow platform** built with **FastAPI, Playwright, and Streamlit**.
 
-This platform transforms global career pages into **actionable technical hiring intelligence**, enabling task-driven crawling, role filtering, trend summarization, historical snapshot accumulation, and visual dashboard monitoring.
+This project upgrades browser automation from a one-off crawler script into a **platformized workflow system** with:
+
+- task lifecycle orchestration
+- structured browser data extraction
+- historical task persistence
+- trend analytics
+- visual dashboard delivery
+- production-style API services
+
+It is designed as a **resume-ready AI engineering showcase project** for AI application, workflow, and platform engineering roles.
 
 ---
 
-## ✨ Key Highlights
+## ✨ Core Highlights
 
-- 🌍 Global tech hiring source parsing
-- 🤖 Playwright-powered structured job extraction
-- 🧠 Technical role filtering pipeline
-- 📈 Hiring trend analytics and keyword mining
-- 🕒 Historical snapshot persistence
-- 📊 Streamlit visual hiring radar dashboard
-- 🔌 FastAPI backend with Swagger workflow APIs
-- 📦 Task lifecycle orchestration and async scheduling
+- 🤖 Playwright-powered browser automation
+- 🔄 Task lifecycle orchestration
+- 📦 Historical task snapshot persistence
+- 📈 Trend analysis and keyword mining
+- 📊 Streamlit workflow dashboard
+- 🔌 FastAPI backend service APIs
+- 🧠 Workflow-oriented system architecture
+- 📚 Swagger execution proof for technical interviews
 
 ---
 
 ## 🖥️ Dashboard Overview
 
-The platform provides a polished **AI workflow dashboard** for technical hiring intelligence monitoring.
+A polished visual dashboard for browser workflow monitoring and trend intelligence.
 
 ![Dashboard Overview](./assets/01-dashboard-overview.png)
 
 ---
 
-## 📈 Hiring Trend Analysis
+## 📈 Trend Analytics Panel
 
-A dedicated trend analysis panel highlights:
+The analytics panel highlights:
 
-- total technical jobs
-- top hiring locations
+- total tasks
+- latest trend metrics
+- top locations
 - recurring keywords
-- category distribution
-- latest snapshot metrics
+- role category distribution
 
 ![Trend Analysis](./assets/02-trend-analysis-panel.png)
 
 ---
 
-## 🕒 Category & History Insights
+## 🕒 Category & History Panel
 
-The dashboard also supports:
+Supports:
 
-- category breakdown table
-- top keywords panel
-- trend history table
-- historical snapshot timeline
+- category breakdown
+- trend history
+- keyword accumulation
+- snapshot timeline
 
 ![Category History](./assets/03-category-history-panel.png)
 
 ---
 
-## 📋 Task Lifecycle Management
+## 📋 Task Lifecycle Table
 
-All browser workflow tasks are persisted and visualized through a structured task lifecycle table.
+All tasks are persisted and visualized through a lifecycle table.
 
-Features include:
+Tracked fields include:
 
-- task id tracking
-- execution source
-- updated time
-- success status
+- task_id
+- source
+- status
+- updated_at
 - lifecycle history
 
 ![Task Lifecycle](./assets/04-task-lifecycle-table.png)
@@ -72,44 +81,33 @@ Features include:
 
 ## 🧠 System Architecture
 
-The entire platform follows a complete data pipeline:
+Pipeline:
 
-Career Source → Parser → Storage → Filter → Analyzer → Summary + History → Dashboard
+Browser Source → Parser → Task Store → Analyzer → Summary → History → Dashboard
 
 ![System Architecture](./assets/05-system-architecture.png)
 
-### Pipeline Modules
-
-- **Career Pages** → global hiring sources
-- **Playwright Job Parser** → structured extraction
-- **Raw Jobs Storage** → JSON persistence
-- **Tech Job Filter** → AI / backend / infra role selection
-- **Trend Analyzer** → location + keyword + category mining
-- **Trend Summary** → latest hiring snapshot
-- **Trend History** → daily accumulation
-- **Dashboard** → visual intelligence delivery
+### Modules
+- Browser Source
+- Playwright Parser
+- Task Storage
+- Workflow Manager
+- Trend Analyzer
+- Snapshot Summary
+- History Accumulator
+- Streamlit Dashboard
 
 ---
 
-## 🔌 Backend API Surface
-
-The FastAPI backend exposes a production-style API workflow.
+## 🔌 API Workflow
 
 ### Swagger Overview
 ![Swagger API](./assets/06-api-swagger-overview.png)
 
-### Task Run Request
-A task can be created dynamically for a technical hiring radar workflow.
-
+### Run Task Request
 ![Task Run Request](./assets/07-api-task-run-request.png)
 
-### Task Run Response
-Successful task creation returns:
-
-- `task_id`
-- `pending` lifecycle state
-- background scheduling confirmation
-
+### Run Task Response
 ![Task Run Response](./assets/08-api-task-run-response.png)
 
 ---
@@ -124,103 +122,44 @@ Successful task creation returns:
 
 ### Frontend
 - Streamlit
-- Custom dashboard components
 - Metrics panels
-- Trend history visual blocks
-
-### Data Layer
-- JSON persistence
-- task snapshots
-- trend summaries
-- historical timeline accumulation
+- Task lifecycle table
+- Trend analytics blocks
 
 ### Workflow
-- task lifecycle orchestration
-- async scheduling
-- source-based pipelines
-- hiring trend analytics
-
----
-
-## 📊 Example Use Case
-
-### Global Technical Hiring Radar
-Currently tracks:
-
-- Databricks
-- global technical roles
-- AI / backend / infra / platform trends
-- hiring hotspot cities
-- keyword demand evolution
-
-Future tracked sources can be expanded to:
-
-- Anthropic
-- OpenAI
-- Cloudflare
-- Vercel
-
----
-
-## 🎯 Project Value
-
-This project demonstrates end-to-end capability across:
-
-- browser automation
-- backend API engineering
-- data pipeline design
-- trend analytics
 - task orchestration
-- dashboard productization
-- portfolio-grade documentation
-
-It is designed as a **resume-ready AI engineering showcase project** for:
-
-- AI Application Engineer
-- Full Stack AI Engineer
-- AI Workflow Engineer
-- Platform Engineer Intern roles
+- async scheduling
+- historical snapshots
+- structured trend analytics
 
 ---
 
-## 🚀 Run Locally
+## 🚀 Quick Start
 
-### 1) Backend
-```bash
+### 1. Backend
 uvicorn app.api.main:app --reload
-```
 
-### 2) Dashboard
-```bash
+### 2. Dashboard
 streamlit run ui/dashboard.py
-```
 
-### 3) Swagger Docs
-```text
+### 3. Swagger
 http://127.0.0.1:8000/docs
-```
 
 ---
 
-## 📌 Future Roadmap
+## 📌 Roadmap
 
-- multi-company source expansion
-- trend delta comparison
-- time-series line charts
-- hiring growth alerts
-- AI-generated trend reports
-- recruiter intelligence workflows
-- scheduled daily automation
+- PostgreSQL persistence
+- Docker Compose deployment
+- multi-source browser workflows
+- task retry queue
+- daily scheduled automation
+- AI-generated workflow reports
 - cloud deployment pipeline
 
 ---
 
-## ⭐ Portfolio Note
+## ⭐ Technical Blog
 
-This repository is intentionally designed as a **portfolio-grade AI workflow platform case study**, emphasizing:
-
-- engineering clarity
-- product-level UX
-- system architecture transparency
-- API execution proof
-- visual storytelling for technical interviews
+Juejin Write-up:  
+https://juejin.cn/post/7627400127372935214
